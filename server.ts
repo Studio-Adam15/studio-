@@ -11,7 +11,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 const SHARED_APP_URL =
   process.env.APP_URL && process.env.APP_URL !== 'MY_APP_URL'
     ? process.env.APP_URL.replace(/\/+$/, '')
-    : 'https://ais-pre-xwdnjzufi4lumeu74ktxia-664548807468.europe-west2.run.app';
+    : 'https://glittery-boba-af022c.netlify.app';
 
 function resolvePublicOrigin(req: Request): string {
   const forwardedHost = req.get('x-forwarded-host')?.split(',')[0]?.trim();
@@ -35,17 +35,17 @@ function injectOpenGraphUrls(html: string, req: Request): string {
   const origin = resolvePublicOrigin(req);
   const pagePath = req.originalUrl.split('?')[0] || '/';
   const pageUrl = `${origin}${pagePath === '/' ? '/' : pagePath}`;
-  const ogImageUrl = `${origin}/og-preview.jpg`;
+  const ogImageUrl = `${origin}/og-image.jpg`;
 
   return html
     .replace(/__OG_URL__/g, pageUrl)
     .replace(/__OG_IMAGE_URL__/g, ogImageUrl)
     .replace(
-      /https:\/\/ais-pre-xwdnjzufi4lumeu74ktxia-664548807468\.europe-west2\.run\.app\/og-preview\.jpg/g,
+      /https:\/\/glittery-boba-af022c\.netlify\.app\/og-image\.jpg/g,
       ogImageUrl
     )
     .replace(
-      /https:\/\/ais-pre-xwdnjzufi4lumeu74ktxia-664548807468\.europe-west2\.run\.app\//g,
+      /https:\/\/glittery-boba-af022c\.netlify\.app\//g,
       pageUrl
     );
 }
@@ -59,7 +59,7 @@ async function startServer() {
     res.json({ ok: true });
   });
 
-  // Explicitly serve public assets (og-preview.jpg, logos, portfolio media, static zip)
+  // Explicitly serve public assets (og-image.jpg, logos, portfolio media, static zip)
   // so social link crawlers get direct fast responses with proper MIME types.
   const publicDir = path.resolve(__dirname, 'public');
   app.use(
