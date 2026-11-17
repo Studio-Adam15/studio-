@@ -1,0 +1,6 @@
+{
+  "name": "STUDIO ADAM | From Idea to Impact",
+  "description": "ستوديو آدم — علامة إبداعية تحوّل الأفكار إلى تجارب بصرية ذات معنى وأثر. أنا اللي بصنع من الفكرة أثرًا. لوجوهات، هويات بصرية، مواقع، وبوستات إعلانية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

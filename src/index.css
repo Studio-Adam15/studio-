@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --cream: #f3efe4;
+    --cream-2: #ece7d8;
+    --teal: #0d4f49;
+    --teal-deep: #0a3f3a;
+    --teal-ink: #0b423d;
+    --teal-soft: #e7efe9;
+    --ink: #14352f;
+    --ink-soft: #5f7a72;
+    --line: #dcd6c4;
+    --wa: #25d366;
+    --mint: #bfe8c8;
+    --radius: 24px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Cairo', 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+    background-color: var(--cream);
+    color: var(--ink);
+    line-height: 1.85;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Universal Bidirectional & Numeral Stabilization */
+  bdi,
+  [dir="ltr"],
+  .dir-ltr {
+    direction: ltr !important;
+    unicode-bidi: isolate;
+  }
+
+  bdi {
+    display: inline-block;
+  }
+
+  .tabular-nums,
+  .numeral,
+  .font-mono {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+
+  ::selection {
+    background-color: var(--teal);
+    color: #ffffff;
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #C8BFAC;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
+}
+
+/* ==========================================================================
+   Reference Style (ktrwny-ahtrafy-mthl-hdha.oni.build)
+   ========================================================================== */
+
+/* 1. Points all over the website (Dotted Canvas) */
+.dots {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(13, 79, 73, 0.08) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+}
+
+/* Dark dotted overlay for hero band & dark cards */
+.dots-dark {
+  position: relative;
+}
+.dots-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.4px, transparent 1.4px);
+  background-size: 24px 24px;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* Lenis smooth scrolling integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* 2. Floating Chips Animation with fluid easing */
+@keyframes floaty {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.4deg);
+  }
+}
+
+.animate-floaty-1 {
+  animation: floaty 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-floaty-2 {
+  animation: floaty 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: -3s;
+  will-change: transform;
+}
+
+/* 3. Blinking live dot */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.animate-blink {
+  animation: blink 2.2s ease-in-out infinite;
+}
+
+/* 4. Buttery Interactive Card hover */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  will-change: transform;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: var(--teal);
+  box-shadow: 0 20px 42px -10px rgba(10, 63, 58, 0.12);
+}
+
+.card-hover-dark {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.card-hover-dark:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -10px rgba(10, 63, 58, 0.32);
+}
+
+/* 5. Smooth Button Micro-interactions */
+button:not(:disabled), a.cursor-pointer {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+/* 6. Range slider styling */
+input[type=range] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 99px;
+  background: #e4dfcf;
+  outline: none;
+  transition: opacity 0.2s ease;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 3.5px solid #fff;
+  box-shadow: 0 3px 10px rgba(10, 63, 58, 0.32);
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 4px 14px rgba(10, 63, 58, 0.45);
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.08);
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 4px solid #fff;
+  box-shadow: 0 2px 8px rgba(10, 63, 58, 0.35);
+  cursor: pointer;
+}
