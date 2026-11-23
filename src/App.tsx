@@ -124,7 +124,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F0E6] text-[#124E52] flex flex-col font-sans selection:bg-[#124E52] selection:text-[#F5F0E6] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#F5F0E6] text-[#124E52] flex flex-col font-sans selection:bg-[#124E52] selection:text-[#F5F0E6] relative overflow-x-clip">
         {/* Global Points / Dotted Canvas */}
         <div className="dots" aria-hidden="true" />
 

@@ -25,7 +25,7 @@
     background-color: var(--cream);
     color: var(--ink);
     line-height: 1.85;
-    overflow-x: hidden;
+    overflow-x: clip;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -70,6 +70,14 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--teal);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* ==========================================================================
